@@ -70,13 +70,28 @@ public class ProjectTeam {
     }
 
     // Methods:
+    // Ràng buộc: Không được xóa trưởng nhóm khi chưa chọn trưởng nhóm thay thế
+    public boolean removeMember(String employeeId) {
+        if (teamLeader != null && teamLeader.getId().equals(employeeId)) {
+            System.out.println("Hãy đổi leader trước khi xóa nhân sự này.");
+            return false;
+        }
+        boolean isRemoved = teamMembers.removeIf(e -> e.getId().equals(employeeId));
+        if (isRemoved) {
+            System.out.println("Đã xóa nhân sự: " + employeeId);
+        } else {
+            System.out.println("Không tìm thấy nhân sự: " + employeeId);
+        }
+        return isRemoved;
+    }
+
     public void changeLeader(Employee employee) {
         // Ràng buộc: Trưởng nhóm mới phải được thêm vào nhóm nếu chưa phải thành viên
         if (!contains(employee.getId())) {
             (this.teamMembers).add(employee);
         }
         this.teamLeader = employee;
-        System.out.println("Đã thay đổi trưởng nhóm thành: " + employee.getId());
+        System.out.println("Đã thay đổi leader thành: " + employee.getId());
     }
 
     public double calculateTotalMonthlyCost() {
