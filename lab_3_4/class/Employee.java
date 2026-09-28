@@ -64,7 +64,7 @@ public class Employee {
         return id;
     }
 
-    public String getFUllName() {
+    public String getFullName() {
         return fullName;
     }
 
@@ -107,7 +107,7 @@ public class Employee {
         System.out.println("- Lương cơ bản: " + this.baseSalary);
     }
 
-    // Destructor virtual là in ra thứ tự hủy lớp xem đã đúng chưa (Java và C# không
-    // cần), Khi virtual có trong lớp cha, thứ tự hủy sẽ là lớp con -> lớp cha còn
-    // không có virtual thì chỉ lớp cha bị hủy, lớp con không đc giải phóng.
+    // Destructor virtual để hiển thị thứ tự hủy lớp xem đã đúng chưa (Java và C#
+    // không cần), Khi virtual có trong lớp cha, thứ tự hủy sẽ là lớp con -> lớp cha
+    // còn không có virtual thì chỉ lớp cha bị hủy, lớp con không đc giải phóng.
 }
