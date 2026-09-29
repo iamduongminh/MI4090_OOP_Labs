@@ -1,4 +1,4 @@
-# BÁO CÁO KẾT QUẢ KIỂM THỬ — LAB 3 & 4
+# BÁO CÁO KẾT QUẢ KIỂM THỬ — LAB 3
 **Môn học:** Lập trình Hướng đối tượng  
 **Ngôn ngữ:** Java  
 **Các lớp:** `Employee`, `SoftwareEngineer`, `ProjectTeam`  
