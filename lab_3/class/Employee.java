@@ -1,3 +1,6 @@
+// Họ và tên: Dương Quang Minh
+// MSSV: 20237362
+
 public class Employee {
     // Attributes:
     private String id;

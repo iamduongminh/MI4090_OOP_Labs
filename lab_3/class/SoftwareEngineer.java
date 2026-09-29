@@ -1,3 +1,6 @@
+// Họ và tên: Dương Quang Minh
+// MSSV: 20237362
+
 public class SoftwareEngineer extends Employee {
     // Attributes:
     // Các attributes đã có của Employee.
