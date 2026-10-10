@@ -7,6 +7,9 @@ public class Computer extends Device implements INetworkable {
     private String cpuType;
     private boolean dedicatedGPU;
 
+    private String ipAddress;
+    private boolean isConnected;
+
     // Constructor:
     public Computer(String deviceId, String deviceName, int yearInUse, long price, DeviceStatus status,
             int ramCapacity, String cpuType, boolean dedicatedGPU) {
@@ -39,24 +42,40 @@ public class Computer extends Device implements INetworkable {
         return super.toString() + String.format("%d GB, %s, GPU: %b", ramCapacity, cpuType, dedicatedGPU);
     }
 
+    // Interface Contract Methods:
+
     @Override
     public String ipAddress() {
-
+        return ipAddress;
     }
 
     @Override
     public void connect(String ipAddress) {
+        // Địa chỉ IP không được rỗng.
+        if (ipAddress == null || ipAddress.trim().isEmpty()) {
+            throw new IllegalArgumentException("IP address can not empty");
+        }
 
+        // Không cho phép kết nối lại khi thiết bị vẫn đang có kết nối.
+        if (isConnected == true) {
+            throw new IllegalStateException("Can't connect 2 IP addresses");
+        }
+
+        this.ipAddress = ipAddress;
+        this.isConnected = true;
     }
 
     @Override
     public void disconnect() {
+        this.ipAddress = null;
+        this.isConnected = false;
 
+        System.out.println("Disconnected");
     }
 
     @Override
     public boolean isConnected() {
-
+        return isConnected;
     }
 
     // Getters:
