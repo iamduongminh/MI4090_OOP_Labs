@@ -7,6 +7,15 @@ public class Computer extends Device implements INetworkable {
     private String cpuType;
     private boolean dedicatedGPU;
 
+    // Constructor:
+    public Computer(String deviceId, String deviceName, int yearInUse, long price, DeviceStatus status,
+            int ramCapacity, String cpuType, boolean dedicatedGPU) {
+        super(deviceId, deviceName, yearInUse, price, status);
+        this.ramCapacity = ramCapacity;
+        this.cpuType = cpuType;
+        this.dedicatedGPU = dedicatedGPU;
+    }
+
     // Overrided Methods:
 
     @Override
@@ -45,4 +54,31 @@ public class Computer extends Device implements INetworkable {
 
     }
 
+    // Getters:
+
+    public int getRamCapacity() {
+        return ramCapacity;
+    }
+
+    public String getCpuType() {
+        return cpuType;
+    }
+
+    public boolean hasDedicatedGPU() {
+        return dedicatedGPU;
+    }
+
+    // Setters:
+
+    public void setRamCapacity(int ramCapacity) {
+        this.ramCapacity = ramCapacity;
+    }
+
+    public void setCpuType(String cpuType) {
+        this.cpuType = cpuType;
+    }
+
+    public void setDedicatedGPU(boolean dedicatedGPU) {
+        this.dedicatedGPU = dedicatedGPU;
+    }
 }
