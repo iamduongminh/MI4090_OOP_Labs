@@ -28,7 +28,7 @@ public class Computer extends Device implements INetworkable {
 
         int currentYear = Year.now().getValue();
 
-        if (this.getYearInUse() - currentYear > 5) {
+        if (currentYear - this.getYearInUse() > 5) {
             percentage += 0.01;
         }
         return (long) (this.getPrice() * percentage);
