@@ -35,6 +35,11 @@ public class Computer extends Device implements INetworkable {
     }
 
     @Override
+    public String toString() {
+        return super.toString() + String.format("%d GB, %s, GPU: %b", ramCapacity, cpuType, dedicatedGPU);
+    }
+
+    @Override
     public String ipAddress() {
 
     }
