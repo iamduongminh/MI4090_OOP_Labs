@@ -1,7 +1,7 @@
 public class NetworkPrinter extends Printer implements INetworkable {
 
     @Override
-    public String ipAddress() {
+    public String getIpAddress() {
 
     }
 

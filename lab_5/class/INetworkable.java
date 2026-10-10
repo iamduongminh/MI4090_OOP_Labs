@@ -1,6 +1,6 @@
 public interface INetworkable {
 
-    String ipAddress();
+    String getIpAddress();
 
     void connect(String ipAddress);
 

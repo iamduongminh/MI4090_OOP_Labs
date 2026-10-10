@@ -39,13 +39,13 @@ public class Computer extends Device implements INetworkable {
 
     @Override
     public String toString() {
-        return super.toString() + String.format("%d GB, %s, GPU: %b", ramCapacity, cpuType, dedicatedGPU);
+        return super.toString() + String.format(", %d GB, %s, GPU: %b", ramCapacity, cpuType, dedicatedGPU);
     }
 
     // Interface Contract Methods:
 
     @Override
-    public String ipAddress() {
+    public String getIpAddress() {
         return ipAddress;
     }
 
