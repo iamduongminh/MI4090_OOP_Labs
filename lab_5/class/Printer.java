@@ -4,7 +4,7 @@ public class Printer extends Device implements INetworkable {
     private PrinterType printerType;
     private long pageCount;
     private boolean isColor;
-    private boolean hasNetworkSupport;
+    private boolean hasNetworkSupport = true;
 
     // INetworkable state attributes:
     private String ipAddress;
@@ -12,12 +12,11 @@ public class Printer extends Device implements INetworkable {
 
     // Constructor:
     public Printer(String deviceId, String deviceName, int yearInUse, long price, DeviceStatus status,
-            PrinterType printerType, long pageCount, boolean isColor, boolean hasNetworkSupport) {
+            PrinterType printerType, long pageCount, boolean isColor) {
         super(deviceId, deviceName, yearInUse, price, status);
         this.printerType = validatePrinterType(printerType);
         this.pageCount = validatePageCount(pageCount);
         this.isColor = isColor;
-        this.hasNetworkSupport = hasNetworkSupport;
         this.isConnected = false;
         this.ipAddress = null;
     }
@@ -54,10 +53,9 @@ public class Printer extends Device implements INetworkable {
     @Override
     public String toString() {
         return super.toString() + String.format(
-                ", %s, %,d trang, network: %s, color: %s",
+                ", %s, %,d trang, network: true, color: %s",
                 printerType,
                 pageCount,
-                hasNetworkSupport ? "true" : "false",
                 isColor ? "true" : "false");
     }
 
@@ -70,6 +68,7 @@ public class Printer extends Device implements INetworkable {
 
     @Override
     public void connect(String ipAddress) {
+
         // Dia chi IP khong duoc rong.
         if (ipAddress == null || ipAddress.trim().isEmpty()) {
             throw new IllegalArgumentException("IP address khong duoc de trong.");
@@ -78,15 +77,10 @@ public class Printer extends Device implements INetworkable {
         // Khong cho phep ket noi lai khi thiet bi dang ket noi.
         if (this.isConnected) {
             throw new IllegalStateException(
-                    "Thiet bi dang ket noi toi " + this.ipAddress + ", khong the ket noi them.");
+                    "Thiet bi dang ket noi toi " + this.ipAddress.trim() + ", khong the ket noi them.");
         }
 
-        // May in phai ho tro mang moi cho ket noi.
-        if (!this.hasNetworkSupport) {
-            throw new IllegalStateException("May in nay khong ho tro ket noi mang.");
-        }
-
-        this.ipAddress = ipAddress;
+        this.ipAddress = ipAddress.trim();
         this.isConnected = true;
     }
 
@@ -130,10 +124,6 @@ public class Printer extends Device implements INetworkable {
 
     public void setPageCount(long pageCount) {
         this.pageCount = validatePageCount(pageCount);
-    }
-
-    public void setHasNetworkSupport(boolean hasNetworkSupport) {
-        this.hasNetworkSupport = hasNetworkSupport;
     }
 
     public void setColor(boolean isColor) {
