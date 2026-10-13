@@ -1,3 +1,6 @@
+// 20237362
+// Dương Quang Minh
+
 import java.time.Year;
 
 public class Computer extends Device implements INetworkable {

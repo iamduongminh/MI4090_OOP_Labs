@@ -1,3 +1,5 @@
+// 20237362
+// Dương Quang Minh
 public class Printer extends Device implements INetworkable {
 
     // Attributes:

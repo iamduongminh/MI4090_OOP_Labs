@@ -1,3 +1,5 @@
+// 20237362
+// Dương Quang Minh
 public class Projector extends Device {
     // Attributes:
     private int brightness;
