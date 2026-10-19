@@ -50,6 +50,13 @@ public class BorrowingSlip {
         if (borrowDays > device.getMaxBorrowDays())
             throw new InvalidBorrowPeriodException(device.getDeviceId(), borrowDays, device.getMaxBorrowDays());
 
+        // Kiểm tra thiết bị trùng lặp trong phiếu mượn trước
+        for (BorrowItem item : items) {
+            if (item.getDevice().getDeviceId().equals(device.getDeviceId())) {
+                throw new DuplicateDeviceException(device.getDeviceId());
+            }
+        }
+
         // Thiết bị đang Available.
         if (device.getStatus() != DeviceStatus.Available) {
             throw new DeviceUnavailableException(device.getDeviceId(), device.getStatus());
@@ -58,12 +65,6 @@ public class BorrowingSlip {
         // Người mượn chưa đạt giới hạn thiết bị.
         if (items.size() >= borrower.getMaximumDevices()) {
             throw new BorrowLimitExceededException(borrower.getBorrowerId(), borrower.getMaximumDevices());
-        }
-
-        for (BorrowItem item : items) {
-            if (item.getDevice().getDeviceId().equals(device.getDeviceId())) {
-                throw new DuplicateDeviceException(device.getDeviceId());
-            }
         }
     }
 
