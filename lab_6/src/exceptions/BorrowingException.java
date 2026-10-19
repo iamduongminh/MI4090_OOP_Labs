@@ -1,5 +1,7 @@
 package exceptions;
 
-public class BorrowingException {
-
+public class BorrowingException extends RuntimeException {
+    public BorrowingException(String message) {
+        super(message);
+    }
 }
